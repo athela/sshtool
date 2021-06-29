@@ -1,0 +1,18 @@
+{
+        "192.168.1.122": [
+                "import world",
+                "print world.g_Player.keys()",
+                "print world.g_Players.keys()",
+                "import world",
+                "print world.g_Players.keys()"
+        ],
+        "192.168.1.123": [
+                "import world\nprint world.g_Player.keys()",
+                "import world\nprint world.g_Players.keys()"
+        ],
+        "192.168.1.157": [
+                "import world",
+                "print world.g_Players.keys()",
+                "print sorted(world.g_Players.keys())"
+        ]
+}

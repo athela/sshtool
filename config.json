@@ -1,0 +1,20 @@
+{
+	"user_department": "cehua",
+	"user_department-explain": "test/dev/cehua",
+	"error_upload_ip": "192.168.1.123",
+	"max_line_number": 2000,
+	"append_server_list": {
+
+		"0.0.0.0": {
+			"name":"example",
+			"user_type":6,
+			"srv_type":[1]
+		},
+
+		"0.0.0.0": {
+				"name":"example",
+				"user_type":6,
+				"srv_type":[1]
+		}
+	}
+}
