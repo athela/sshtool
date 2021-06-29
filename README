@@ -1,0 +1,60 @@
+一、简要说明
+  针对公司项目组使用服务器的情况，为非服务器组同学操作服务器做的一款可视化工具
+ 
+二、运行
+  1. 源码运行和打包使用较为稳定的 python3.8
+  使用python3.9时， 打包出现 WARNING: lib not found: api-ms-win-core-path-l1-1-0.dll dependency of c:\python3\python39.dll，有些人的电脑上运行失败
+  2. 依次安装模块
+    pip install [paramiko|paramiko_expect|xlrd==1.2.0|pyinstaller|ConfigParser]
+  3. 打包
+    以在 main.py 目录下打包为例，打包命令：
+      C:\python3\Scripts\pyinstaller.exe -D -p "..;..\common" -w -y --clean --specpath  ".pack" --workpath ".pack\build" --distpath ".pack\dist" -i "..\image.ico" -n sshtool main.py
+      然后把目录下config.json拷到exe目录下[非必须]
+    打包选项说明：
+      -D, –onedir | 打包多个py文件, 在dist目录中生成很多依赖文件
+      -p  DIR, –path=DIR | 设置导入路径(和使用PYTHONPATH效果相似)
+        可以用路径分割符(Windows使用分号,Linux使用冒号)分割指定多个目录.
+        也可以使用多个-p参数来设置多个导入路径，让pyinstaller自己去找程序需要的资源
+      -w, –windowed,–noconsole | 使用Windows子系统执行. 当程序启动的时候不会打开命令行(只对Windows有效)
+        当打包后的exe运行不起来时，可以去掉这个选项打包运行看哪里有问题
+      -y	如果dist文件夹内已经存在生成文件，则不询问用户，直接覆盖
+      –clean	在本次编译开始时，清空上一次编译生成的各种文件，默认不清除
+      --specpath spec(规格)，打包的中间文件，整理的要打包的内容
+      --workpath 生成的中间文件
+      -–distpath 生成文件放在哪里
+      -n 生成的.exe文件和.spec的文件名
+      -i 为 main.exe指定图标
+    
+    
+三、界面使用说明
+  1. 进入服务器页面，默认刷新基本信息
+		手动点刷新，刷新进程信息，开发服会输出当前代码版本信息
+	2. 更新代码到某个版本号，在更新按钮上使用右键；认证、datasrv、地图的更新也支持这样使用
+	3. 调时，输入框默认显示该服当前时间
+	4. 开发服的更新/重启/看日志/配置，区分了九州和桃手
+	5. 策划服提供，可导所有表格、可导单个表格
+		选[查询]点击导表，下拉框更新最新的表格列表
+		导单个或所有表格，选表格选项 或者 填入 skill_srv 类似标签
+		导多个表，手动输入如：skill_srv,buff_srv,fuli_srv
+	6. 日志 输出已有的历史日志，追踪日志 持续输出实时日志(如有)，同时button变色，再次点击会停止输出
+		追踪日志时，不影响其它按钮的输出
+	7. 跨服或开发服同时开两个日志追踪时，分栏显示, 停止该追踪，该栏消失
+		适合跨服同时显示主控和战斗服的日志
+	8. 更改服务器配置game.ini
+		展示了常用配置的修改
+		未展示的配置，可通用[自定义]区域修改或添加
+	9. TelentDebug功能，连接服务器debug端口交互
+		支持上下键翻看历史输入过的指令
+	10. [服务器]和[批量]预留了linux系统命令和sudo指令，可自由输入
+		支持上下键翻看历史输入过的指令
+	11. [批量]可对多个服务器同时调时，更新，重启，看日志
+		批量更新，右键，可输入版本号
+	12. 日志 可查看其它日志文件，在日志按钮上右键输入不带.log后缀的文件名，如 gm
+	13. 单击或双击 右边输出框的 服务器名button, 左边的操作框 会跳到该 服务器的操作页面
+	14. 可根据需要修改exe目录下的config.json文件
+		user_department: 用户类型
+		append_server_list: 支持本地增加[使用通用指令]的游戏服列表
+		增加[使用非通用指令]的服务器请开发人员添加并重新打包
+
+
+
